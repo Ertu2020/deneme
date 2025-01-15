@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiremitler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('Foto/arkaplan.webp'); /* Arka plan resmi */
+            background-size: cover; /* Resmi tam kapla */
+            background-position: center; /* Ortala */
+            background-attachment: fixed; /* Sayfa kaydıkça sabit kalsın */
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.6); /* Yarı saydam siyah */
+            color: #fff;
+            padding: 10px 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.2rem; /* Boyut küçültüldü */
+        }
+
+        /* Kategori Menü */
+        .category-menu {
+            display: flex;
+            flex-wrap: wrap; /* Daha fazla esneklik için satırlara sarma */
+            justify-content: space-around;
+            padding: 10px;
+            gap: 10px; /* Aralık küçültüldü */
+            margin: 10px 0;
+        }
+
+        .category-item {
+            position: relative;
+            flex: 0 0 30%; /* Kategori öğeleri için genişlik ayarı */
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-item img {
+            width: 100%; /* Fotoğrafı kapsayıcı olacak şekilde tam genişlik */
+            height: 80px; /* Yükseklik küçültüldü */
+            object-fit: cover;
+            display: block;
+        }
+
+        .category-item span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 5px 0;
+        }
+
+        .category-item:hover span {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Ürün Listesi */
+        .product-list {
+            padding: 10px;
+        }
+
+        .product-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Yarı saydam beyaz */
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item img {
+            width: 60px; /* Küçültüldü */
+            height: 60px; /* Küçültüldü */
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h3 {
+            margin: 0 0 5px;
+            font-size: 0.9rem; /* Başlık boyutu küçültüldü */
+            color: #333;
+        }
+
+        .product-info p {
+            margin: 0;
+            font-size: 0.7rem; /* Metin boyutu küçültüldü */
+            color: #666;
+        }
+
+        .product-price {
+            font-size: 0.9rem; /* Fiyat boyutu küçültüldü */
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Mobile responsive tasarımlar */
+        @media (max-width: 768px) {
+            .category-item {
+                flex: 0 0 45%; /* Tablet boyutunda kategori öğelerini yüzde 45 yap */
+            }
+
+            .product-item {
+                padding: 8px;
+            }
+
+            .product-item img {
+                width: 55px; /* Ürün görseli küçültüldü */
+                height: 55px;
+            }
+
+            .product-info h3 {
+                font-size: 0.85rem; /* Başlık boyutu küçültüldü */
+            }
+
+            .product-price {
+                font-size: 0.85rem; /* Fiyat boyutu küçültüldü */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-item {
+                flex: 0 0 100%; /* Kategori öğeleri tek sütuna sığacak şekilde */
+            }
+
+            .product-item {
+                flex-direction: column; /* Ürün öğeleri dikey hizalanacak */
+                padding: 12px;
+            }
+
+            .product-item img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .product-info h3 {
+                font-size: 0.8rem; /* Başlık boyutu küçültüldü */
+            }
+
+            .product-price {
+                font-size: 0.8rem; /* Fiyat boyutu küçültüldü */
+            }
+
+            .navbar h1 {
+                font-size: 1.1rem; /* Başlık boyutu küçültüldü */
+            }
+        }
+
+        @media (max-width: 320px) {
+            .category-item img {
+                height: 70px; /* Kategori görselleri küçültüldü */
+            }
+
+            .product-item img {
+                width: 45px; /* Ürün görselleri küçültüldü */
+                height: 45px;
+            }
+
+            .product-info h3 {
+                font-size: 0.75rem; /* Başlık boyutu küçültüldü */
+            }
+
+            .product-price {
+                font-size: 0.75rem; /* Fiyat boyutu küçültüldü */
+            }
+
+            .navbar h1 {
+                font-size: 1rem; /* Başlık boyutu daha da küçültüldü */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Kiremitler</h1>
+    </div>
+
+    <!-- Kategori Menü -->
+    <div class="category-menu">
+        <a href="pideler.html" class="category-item">
+            <img src="Foto/pidekapak.png" alt="Pideler">
+            <span>Pideler</span>
+        </a>
+        <a href="lahmacunlar.html" class="category-item">
+            <img src="Foto/lahmacunkapak.png" alt="Lahmacunlar">
+            <span>Lahmacunlar</span>
+        </a>
+        <a href="kiremitler.html" class="category-item">
+            <img src="Foto/kiremitkapak.png" alt="Kiremitler">
+            <span>Kiremitler</span>
+        </a>
+        <a href="pizzalar.html" class="category-item">
+            <img src="Foto/pizzakapak.png" alt="Pizzalar">
+            <span>Pizzalar</span>
+        </a>
+        <a href="tatlilar.html" class="category-item">
+            <img src="Foto/Tatlılarkapak.png" alt="Tatlılar">
+            <span>Tatlılar</span>
+        </a>
+        <a href="icecekler.html" class="category-item">
+            <img src="Foto/içeceklerkapak.png" alt="İçecekler">
+            <span>İçecekler</span>
+        </a>
+    </div>
+
+    <!-- Ürün Listesi -->
+    <div class="product-list">
+        <div class="product-item">
+            <img src="Foto/kiremittemantar.jpg" alt="Kiremitte Mantar">
+            <div class="product-info">
+                <h3>Kiremitte Mantar</h3>
+                <p>Domates, biber, sucuk, kaşar peyniri.</p>
+            </div>
+            <div class="product-price">45 TL</div>
+        </div>
+        <div class="product-item">
+            <img src="Foto/kiremittekasarlimantar.jpg" alt="Kiremitte Kaşarlı Mantar">
+            <div class="product-info">
+                <h3>Kiremitte Kaşarlı Mantar</h3>
+                <p>Bol kaşar peyniri, tereyağı.</p>
+            </div>
+            <div class="product-price">40 TL</div>
+        </div>
+        <div class="product-item">
+            <img src="Foto/kiremittekusbasi.jpg" alt="Kiremitte Kuşbaşı">
+            <div class="product-info">
+                <h3>Kiremitte Kuşbaşı</h3>
+                <p>Domates, biber, kıyma.</p>
+            </div>
+            <div class="product-price">50 TL</div>
+        </div>
+        <div class="product-item">
+            <img src="Foto/kiremittekasarlikusbasi.jpg" alt="Kiremitte Kaşarlı Kuşbaşı">
+            <div class="product-info">
+                <h3>Kiremitte Kaşarlı Kuşbaşı</h3>
+                <p>Kıyma, soğan, domates, biber.</p>
+            </div>
+            <div class="product-price">42 TL</div>
+        </div>
+        <div class="product-item">
+            <img src="Foto/kiremitteköfte.jpg" alt="Kiremitte Köfte">
+            <div class="product-info">
+                <h3>Kiremitte Köfte</h3>
+                <p>Domates, biber, kıyma.</p>
+            </div>
+            <div class="product-price">50 TL</div>
+        </div>
+        <div class="product-item">
+            <img src="Foto/kiremittekasarliköfte.jpg" alt="Kiremitte Kaşarlı Köfte">
+            <div class="product-info">
+                <h3>Kiremitte Kaşarlı Köfte</h3>
+                <p>Domates, biber, kıyma.</p>
+            </div>
+            <div class="product-price">50 TL</div>
+        </div>
+        <div class="product-item">
+            <img src="Foto/kiremittetavuk.jpg" alt="Kiremitte Tavuk">
+            <div class="product-info">
+                <h3>Kiremitte Tavuk</h3>
+                <p>Domates, biber, kıyma.</p>
+            </div>
+            <div class="product-price">50 TL</div>
+        </div>
+        <div class="product-item">
+            <img src="Foto/Kiremittekasarlitavuk.jpg" alt="Kiremitte Kaşarlı Tavuk">
+            <div class="product-info">
+                <h3>Kiremitte Kaşarlı Tavuk</h3>
+                <p>Domates, biber, kıyma.</p>
+            </div>
+            <div class="product-price">50 TL</div>
+        </div>
+        <div class="product-item">
+            <img src="Foto/kiremittekasarlimantarlitavuk.jpg" alt="Kiremitte Kaşarlı Mantarlı Tavuk">
+            <div class="product-info">
+                <h3>Kiremitte Kaşarlı Mantarlı Tavuk</h3>
+                <p>Domates, biber, kıyma.</p>
+            </div>
+            <div class="product-price">50 TL</div>
+        </div>
+    </div>
+</body>
+</html>
