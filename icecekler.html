@@ -12,7 +12,8 @@
             background-image: url('Foto/arkaplan.webp'); /* Arka plan resmi */
             background-size: cover; /* Resmi tam kapla */
             background-position: center; /* Ortala */
-            background-attachment: fixed; /* Sayfa kaydıkça sabit kalsın */
+            background-repeat: no-repeat; /* Tekrarlama */
+            background-attachment: scroll; /* Mobil uyumluluk için 'fixed' yerine 'scroll' */
         }
 
         /* Navbar */
@@ -34,48 +35,52 @@
         }
 
         /* Kategori Menü */
-        .category-menu {
-            display: flex;
-            overflow-x: auto;
-            padding: 10px;
-            gap: 15px; /* Fotoğraflar büyüdüğü için aralık artırıldı */
-            margin: 10px 0;
-        }
+    .category-menu {
+        display: flex;
+        overflow-x: auto;
+        padding: 10px;
+        gap: 15px; /* Fotoğraflar büyüdüğü için aralık artırıldı */
+        margin: 10px 0;
+    }
 
-        .category-item {
-            position: relative;
-            flex: 0 0 auto;
-            text-align: center;
-            width: 120px; /* Genişlik artırıldı */
-            text-decoration: none;
-            color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+    .category-item {
+        position: relative;
+        flex: 0 0 auto;
+        text-align: center;
+        width: 120px; /* Genişlik artırıldı */
+        text-decoration: none;
+        color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-        .category-item img {
-            width: 100%; /* Fotoğrafı kapsayıcı olacak şekilde tam genişlik */
-            height: 100px; /* Yükseklik artırıldı */
-            object-fit: cover;
-            display: block;
-        }
+    .category-item img {
+        width: 100%; /* Fotoğrafı kapsayıcı olacak şekilde tam genişlik */
+        height: 100px; /* Yükseklik artırıldı */
+        object-fit: cover;
+        display: block;
+    }
 
-        .category-item span {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            font-size: 0.9rem;
-            padding: 5px 0;
-        }
+    .category-item span {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 0.9rem;
+        padding: 5px 0;
+    }
 
-        .category-item:hover span {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+    .category-item:hover span {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 
+    /* Ürün Listesi */
+    .product-list {
+        padding: 20px;
+    }
         /* Ürün Listesi */
         .product-list {
             padding: 20px;
@@ -121,85 +126,13 @@
             font-weight: bold;
             color: #333;
         }
-
-        /* Mobile responsive tasarımlar */
         @media (max-width: 768px) {
-            .category-menu {
-                padding: 8px;
-                gap: 10px;
-            }
-
-            .category-item {
-                width: 100px; /* Tabletlere göre biraz daha küçük */
-            }
-
-            .product-item {
-                padding: 15px;
-            }
-
-            .product-item img {
-                width: 70px;
-                height: 70px;
-            }
-
-            .product-info h3 {
-                font-size: 0.9rem;
-            }
-
-            .product-price {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .category-menu {
-                gap: 8px;
-            }
-
-            .category-item {
-                width: 90px;
-            }
-
-            .product-item {
-                padding: 12px;
-            }
-
-            .product-item img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .product-info h3 {
-                font-size: 0.8rem;
-            }
-
-            .product-price {
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 320px) {
-            .category-item {
-                width: 80px;
-            }
-
-            .product-item img {
-                width: 55px;
-                height: 55px;
-            }
-
-            .product-info h3 {
-                font-size: 0.7rem;
-            }
-
-            .product-price {
-                font-size: 0.7rem;
-            }
-
-            .navbar h1 {
-                font-size: 1.2rem;
-            }
-        }
+    body {
+        background-image: url('Foto/arkaplan.webp'); /* Mobil için optimize edilmiş resim */
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+    }
     </style>
 </head>
 <body>
