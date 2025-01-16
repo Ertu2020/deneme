@@ -6,13 +6,15 @@
     <title>Lahmacunlar</title>
     <style>
       body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('Foto/arkaplan.webp'); /* Arka plan resmi */
-            background-size: cover; /* Resmi tam kapla */
-            background-position: center; /* Ortala */
-            background-attachment: fixed; /* Sayfa kaydıkça sabit kalsın */
+           font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('Foto/arkaplan.webp'); /* Arka plan resmi */
+    background-size: cover; /* Resmi tam kapla */
+    background-position: center; /* Ortala */
+    background-attachment: fixed; /* Sabit arka plan */
+    background-repeat: no-repeat; /* Tekrar etmesini önle */
+    min-height: 100vh; /* Cihazın tam yüksekliğini kapsar */
         }
 
         /* Navbar */
@@ -125,6 +127,12 @@
             font-weight: bold;
             color: #333;
         }
+        @media screen and (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* Mobil cihazlarda sabit sorun çıkarabilir, scroll ile değiştirildi */
+        background-size: auto 100%; /* Ekranın yüksekliğine göre boyutlandır */
+    }
+}
     </style>
 </head>
 <body>
